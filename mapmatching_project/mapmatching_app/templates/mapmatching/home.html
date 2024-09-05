@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Home</title>
+    <link rel="stylesheet" href="{% static "mapmatching_app/css/bootstrap.css" %}">
+</head>
+<body>
+    <div class="container mt-4">
+        <h1  class="alert alert-info text-center" >Welcome to the Map-Matching Application</h1>
+        <a href="{% url 'upload_view' %}" class="btn btn-primary">Upload GPS and Road Segment Files</a>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Matched Segments</title>
+    <link rel="stylesheet" href="{% static "mapmatching_app/css/bootstrap.css" %}">
+
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="alert alert-info text-center">Matched Segments</h1>
+    <table border="1" class="table table-hover">
+        <tr>
+            <th>GPS Latitude</th>
+            <th>GPS Longitude</th>
+            <th>Start Latitude</th>
+            <th>Start Longitude</th>
+            <th>End Latitude</th>
+            <th>End Longitude</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Country</th>
+            <th>Normalized City</th>
+            <th>Distance (m)</th>
+            <th>Speed (m/s)</th>
+            <th>Road Type</th>  <!-- Add road type column -->
+        </tr>
+        {% for segment in matched_segments %}
+        <tr>
+            <td>{{ segment.gps_lat }}</td>
+            <td>{{ segment.gps_lon }}</td>
+            <td>{{ segment.start_lat }}</td>
+            <td>{{ segment.start_lon }}</td>
+            <td>{{ segment.end_lat }}</td>
+            <td>{{ segment.end_lon }}</td>
+            <td>{{ segment.city }}</td>
+            <td>{{ segment.state }}</td>
+            <td>{{ segment.country }}</td>
+            <td>{{ segment.normalized_city }}</td>
+            <td>{{ segment.distance_m }}</td>
+            <td>{{ segment.speed_mps }}</td>
+            <td>{{ segment.road_type }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <!-- Display the map -->
+    <h2>Map Visualization</h2>
+    <iframe src="{% static 'map.html' %}" width="100%" height="500px" frameborder="0"></iframe>
+
+    <a href="{% url 'home' %}" class="btn btn-success">Go back to home</a>
+    </div>
+</body>
+</html>

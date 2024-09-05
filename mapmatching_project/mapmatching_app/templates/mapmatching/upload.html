@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+<head>
+    <title>Upload Files</title>
+    <link rel="stylesheet" href="{% static "mapmatching_app/css/bootstrap.css" %}">
+
+</head>
+<body>
+    <div class="container mt-4">
+        <h1 class="alert alert-info text-center">Upload GPS and Road Segment Files</h1>
+    <form action="{% url 'upload_view' %}" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <label for="gps_file">GPS Data File:</label>
+        <input type="file" class="" id="gps_file" name="gps_file" accept=".csv" required><br><br>
+
+        <label for="road_file">Road Segments File:</label>
+        <input type="file" class="" id="road_file" name="road_file" accept=".csv" required><br><br>
+
+        <input type="submit" class="btn btn-primary" value="Upload and Process">
+    </form>
+    <a href="{% url 'home' %}" class="btn btn-success mt-4">Go back to home</a>
+    </div>
+</body>
+</html>
